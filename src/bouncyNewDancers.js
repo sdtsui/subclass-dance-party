@@ -16,10 +16,16 @@ bouncyDancer1.prototype.step = function(){
     console.log(this.$node);
     // call the old version of step at the beginning of any call to this new version of step
     Dancer.prototype.step.call(this);
-    this.$node.css("border-radius", "20px");
-    this.$node.css("border", "20px solid red");
-    this.timeBetweenSteps = 3000;
-    this.$node.toggle();
+    //this.$node.css("border-radius", "20px");
+    //this.$node.css("border", "20px solid red");
+    this.$node.css("background-color","red");
+    this.$node.animate({height: '300px'});
+    this.$node.animate({width: '-250px'});
+    this.$node.animate({width: '200px'});
+    this.$node.animate({height: '300px'});
+
+    //this.timeBetweenSteps = 3000;
+    //this.$node.toggle();
 
     //this.$node.animate({'bottom':20}, 1000);
 
@@ -38,6 +44,8 @@ var bouncyDancer2 = function(top, left, timeBetweenSteps){
   this.top = top;
   this.left = left;
   this.timeBetweenSteps = timeBetweenSteps;
+  this.colors = ["green", "blue", "red", "white", "black"];
+  this.idx = 0;
   // we plan to overwrite the step function below, but we still want the superclass step behavior to work,
   // so we must keep a copy of the old version of this function
   Dancer.call(this, this.top, this.left, this.timeBetweenSteps);
@@ -51,7 +59,16 @@ bouncyDancer2.prototype.step = function(){
     // call the old version of step at the beginning of any call to this new version of step
     Dancer.prototype.step.call(this);
     this.$node.css("border-radius", "10px");
-    this.$node.css("border", "15px solid green");
+    //this.$node.css("border", "15px solid "+ this.colors[i] +"\"");
+    this.$node.css("border", "15px solid " + this.colors[this.idx]);
+
+    if (this.idx === this.colors.length-1){
+     this.idx = 0;
+    }else{this.idx++};
+    //this.$node.animate({height: "10px"}});
+    //this.$node.animate({height: "-10px"}});
+
+
     this.timeBetweenSteps = 500;
     this.$node.toggle();
     // toggle() is a jQuery method to show/hide the <span> tag.
@@ -76,8 +93,9 @@ bouncyDancer3.prototype.step = function(){
     console.log(this.$node);
     // call the old version of step at the beginning of any call to this new version of step
     Dancer.prototype.step.call(this);
-    this.$node.css("border-radius", "25px");
-    this.$node.css("border", "75px solid black");
+    this.$node.css("border-radius", "none");
+    this.$node.css("border", "500px outset grey");
+    //this.$node.css("background-image", "url(" + "http://cdn.hiphopwired.com/wp-content/uploads/2011/08/biggie.jpg" + ")");
     this.timeBetweenSteps = 10;
     this.$node.toggle();
 
