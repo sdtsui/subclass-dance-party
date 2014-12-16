@@ -39,7 +39,6 @@ body, a:link, a:visited, a:active{
 }
 
 .dancer{
-  background-image: url("http://images2.fanpop.com/images/photos/6700000/Dancing-elvis-presley-6775623-236-260.gif") ;
   background-size: 50px 50px;
   border:10px solid blue;
   width: 50px;
@@ -47,4 +46,11 @@ body, a:link, a:visited, a:active{
   border-radius:50%;
   position:absolute;
   -webkit-animation: rotating 2s linear infinite;
+}
+.elvis{
+  background-image: url("http://images2.fanpop.com/images/photos/6700000/Dancing-elvis-presley-6775623-236-260.gif") ;
+}
+
+.biebs{
+  background-image: url("http://www.picgifs.com/graphics/j/justin-bieber/graphics-justin-bieber-939677.gif") ;
 }

@@ -27,12 +27,21 @@ $(document).ready(function(){
       $("body").width() * Math.random(),
       Math.random() * 1000
     );
-    //console.log("Added Node:");
+    //console.log("Added Node:";
     //console.log(dancer.$node);
     //dancer.$node.css("transform-origin", "100% center")
     //dancer.$node.css("animation", "circle 2s infinite")
-
+    dancers.push(dancer);
     $('body').append(dancer.$node);
+
+
+
+    });
+  $('body').on('dblclick', function(e){
+    for(var i =0;i<dancers.length;i++){
+      dancers[i].lineUp(e.clientX, e.clientY);
+      console.log('called lineup');
+    }
 
   });
 });
