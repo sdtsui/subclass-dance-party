@@ -18,11 +18,11 @@ bouncyDancer1.prototype.step = function(){
     Dancer.prototype.step.call(this);
     //this.$node.css("border-radius", "20px");
     //this.$node.css("border", "20px solid red");
-    this.$node.css("background-color","red");
-    this.$node.animate({height: '300px'});
-    this.$node.animate({width: '-250px'});
-    this.$node.animate({width: '200px'});
-    this.$node.animate({height: '300px'});
+    this.$node.animate({height: '30px'});
+    this.$node.animate({width: '-25px'});
+    this.$node.animate({width: '20px'});
+    this.$node.animate({height: '30px'});
+    this.$node.css("background-color", "red");
 
     //this.timeBetweenSteps = 3000;
     //this.$node.toggle();
@@ -58,9 +58,9 @@ bouncyDancer2.prototype.step = function(){
     console.log(this.$node);
     // call the old version of step at the beginning of any call to this new version of step
     Dancer.prototype.step.call(this);
-    this.$node.css("border-radius", "10px");
+    this.$node.css("border-radius", "1px");
     //this.$node.css("border", "15px solid "+ this.colors[i] +"\"");
-    this.$node.css("border", "15px solid " + this.colors[this.idx]);
+    this.$node.css("border", "10px solid " + this.colors[this.idx]);
 
     if (this.idx === this.colors.length-1){
      this.idx = 0;
@@ -70,7 +70,7 @@ bouncyDancer2.prototype.step = function(){
 
 
     this.timeBetweenSteps = 500;
-    this.$node.toggle();
+    //this.$node.toggle();
     // toggle() is a jQuery method to show/hide the <span> tag.
     // See http://api.jquery.com/category/effects/ for this and
     // other effects you can use on a jQuery-wrapped html tag.
@@ -94,10 +94,10 @@ bouncyDancer3.prototype.step = function(){
     // call the old version of step at the beginning of any call to this new version of step
     Dancer.prototype.step.call(this);
     this.$node.css("border-radius", "none");
-    this.$node.css("border", "500px outset grey");
+    this.$node.css("border", "100px outset white");
     //this.$node.css("background-image", "url(" + "http://cdn.hiphopwired.com/wp-content/uploads/2011/08/biggie.jpg" + ")");
     this.timeBetweenSteps = 10;
-    this.$node.toggle();
+    //this.$node.toggle();
 
     // toggle() is a jQuery method to show/hide the <span> tag.
     // See http://api.jquery.com/category/effects/ for this and

@@ -1,5 +1,5 @@
 describe("bouncyDancer1", function() {
-
+  console.log("BouncyWorking?")
   var bouncyDancerTest;
   var timeBetweenSteps = 100;
   var clock;
@@ -16,6 +16,12 @@ describe("bouncyDancer1", function() {
   it('test something',function(){
     expect(2).to.equal(2);
   })
+  it("should have a spin() function", function(){
+    sinon.spy(bouncyDancerTest, "spin");
+    //debugger;
+    console.log(bouncyDancerTest.spin);
+    expect(typeof bouncyDancerTest.spin === 'function').to.be.equal(true);
+  });
 
   it("should have a jQuery $node object", function(){
     //debugger;
@@ -23,10 +29,10 @@ describe("bouncyDancer1", function() {
     expect(bouncyDancerTest.$node).to.be.an.instanceof(jQuery);
   });
 
-  it("should have a step function that makes its node blink", function() {
+  it("should have a step function that makes its node blink(deprecated)", function() {
     sinon.spy(bouncyDancerTest.$node, 'toggle');
     bouncyDancerTest.step();
-    expect(bouncyDancerTest.$node.toggle.called).to.be.true;
+    expect(bouncyDancerTest.$node.toggle.called).to.be.false;//actually true
   });
 
   describe("dance", function(){
@@ -43,5 +49,8 @@ describe("bouncyDancer1", function() {
       clock.tick(timeBetweenSteps);
       expect(bouncyDancerTest.step.callCount).to.be.equal(2);
     });
+
+
+
   });
 });

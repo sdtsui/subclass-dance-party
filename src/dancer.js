@@ -1,6 +1,6 @@
 // Creates and returns a new dancer object that can step
 var Dancer = function(top, left, timeBetweenSteps){
-  this.$node = $('<span class="dancer"></span>');
+  this.$node = $('<div class="dancer"></div>');
   this.top = top;
   this.left = left;
   this.timeBetweenSteps = timeBetweenSteps;
@@ -10,12 +10,23 @@ var Dancer = function(top, left, timeBetweenSteps){
   // this one sets the position to some random default point within the body
   this.setPosition(this.top, this.left);
   this.step();
-
+  //this.spin();
 };
+/*
+Dancer.prototype.spin = function(val){
+  this.$node.css("transform-origin", "100% center")
+  this.$node.css("animation", "circle 2s infinite")
+  console.log("Spin Called");
+};
+*/
 
 Dancer.prototype.step = function(){
     // the basic dancer doesn't do anything interesting at all on each step,
     // it just schedules the next step
+
+    //{animation:circle 2s infinite;}
+    //{animation: circle 2s infinite linear;}
+
     var context = this;
     setTimeout(function(){
       context.step();

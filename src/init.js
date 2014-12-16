@@ -29,6 +29,9 @@ $(document).ready(function(){
     );
     //console.log("Added Node:");
     //console.log(dancer.$node);
+    //dancer.$node.css("transform-origin", "100% center")
+    //dancer.$node.css("animation", "circle 2s infinite")
+
     $('body').append(dancer.$node);
 
   });

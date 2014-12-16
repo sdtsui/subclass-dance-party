@@ -1,3 +1,5 @@
+
+
 body, html{
   height:100%;
 }
@@ -20,8 +22,29 @@ body, a:link, a:visited, a:active{
 .title{
   background-color: #777;
 }
+/*
+@-webkit-keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+*/
+@-webkit-keyframes rotating {
+  0%   { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+
+}
+
 .dancer{
+  background-image: url("http://images2.fanpop.com/images/photos/6700000/Dancing-elvis-presley-6775623-236-260.gif") ;
+  background-size: 50px 50px;
   border:10px solid blue;
-  border-radius:10px;
+  width: 50px;
+  height: 50px;
+  border-radius:50%;
   position:absolute;
+  -webkit-animation: rotating 2s linear infinite;
 }
