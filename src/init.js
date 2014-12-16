@@ -38,9 +38,14 @@ $(document).ready(function(){
 
     });
   $('body').on('dblclick', function(e){
+    var inc = 75;
+    var timesCalled = 0;
     for(var i =0;i<dancers.length;i++){
-      dancers[i].lineUp(e.clientX, e.clientY);
-      console.log('called lineup');
+      var xCoord = e.clientX+(inc*timesCalled);
+      var yCoord = e.clientY+(inc*timesCalled);
+      //console.log(xCoord,yCoord);
+      dancers[i].setPosition(yCoord,xCoord);
+      timesCalled++;
     }
 
   });

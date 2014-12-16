@@ -34,10 +34,17 @@ Dancer.prototype.randomMovement = function(){
 }
 */
 Dancer.prototype.addMouseOver = function(){
-  this.$node.on('mouseover', function(){
-    this.toggleClass("elvis");
-    this.toggleClass("biebs");
+  var context = this.$node;
+  //console.log('this:addMouseOver'+context);
+  context.mouseover(function(){
+    changeClass(context);
   })
+  var changeClass = function(context){
+    //console.log('context: inside mouseover before class manipul'+context);
+    context.removeClass("elvis");
+    context.addClass("biebs");
+    //console.log('context: inside mouseover after class manipul'+context);
+  }
 }
 Dancer.prototype.step = function(){
     // the basic dancer doesn't do anything interesting at all on each step,
@@ -48,15 +55,48 @@ Dancer.prototype.step = function(){
 
     var context = this;
     setTimeout(function(){
+      //debugger;
       var polarity = [-1,1]
-      var bound = [12,15,18,45,55];
-      dir1 = polarity[Math.floor(Math.random()*polarity.length-1)];
-      dir2 = polarity[Math.floor(Math.random()*polarity.length-1)];
-      mag1 = bound[Math.floor(Math.random()*bound.length-1)];
-      mag2 = bound[Math.floor(Math.random()*bound.length-1)];
-      context.setPosition(context.top+(dir1*mag1), context.left+(dir2*mag2));
-      context.step();
+      var bound = [30,45,75,85,155];
+      var dir1 = polarity[Math.floor(Math.random()*(polarity.length-1))];
+      var dir2 = polarity[Math.floor(Math.random()*(polarity.length-1))];
+      //console.log(polarity[1]);
+      var mag1 = bound[Math.floor(Math.random()*bound.length-1)];
+      var mag2 = bound[Math.floor(Math.random()*bound.length-1)];
+      var xPos = context.top+(dir1*mag1)
+      var yPos = context.left+(dir2*mag2);
+      //console.log(xPos,yPos);
+      //console.log(typeof xPos, typeof yPos);
 
+      context.setPosition(xPos, yPos);
+
+
+      //loop:
+      //examine one element of the array: top and left coordinates
+      // (equations);
+      //if (distance) < 100:
+      //switch class of examined element;
+      //
+      //console.log(window.dancers);
+      for (var i=0; i<window.dancers.length; i++){
+        //console.log(this.top);
+        //debugger;
+        var examine = window.dancers[i];
+        //console.log(this.top);
+        //console.log(examine.top);
+        var xDis = Math.pow(context.top-examine.top,2);
+        var yDis = Math.pow(context.left-examine.left,2);
+        //console.log(xDis,yDis);
+        var distance = Math.sqrt(xDis+yDis);
+        //console.log(distance);
+
+        if(distance < 100 && distance !== 0){
+          //console.log('collission');
+          dancers[i].$node.removeClass("elvis");
+          dancers[i].$node.addClass("biebs");
+        }
+      }
+      context.step();
       //console.log(dir1);
       //console.log(mag1);
       //console.log(dir2);
@@ -74,9 +114,12 @@ Dancer.prototype.setPosition = function(top, left){
     // Use css top and left properties to position our <span> tag
     // where it belongs on the page. See http://api.jquery.com/css/
     //
+    //debugger;
     var styleSettings = {
       top: top,
       left: left
     };
     this.$node.css(styleSettings);
+    this.top = top;
+    this.left = left;
 };
